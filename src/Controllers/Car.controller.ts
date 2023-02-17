@@ -7,8 +7,22 @@ export default class CarController {
 
   public create: RequestHandler = async (req, res) => {
     const car: ICar = req.body;
-    const newCar = await this._service.create(car);
+    const { message } = await this._service.create(car);
 
-    return res.status(201).json(newCar);
+    return res.status(201).json(message);
+  };
+
+  public findAll: RequestHandler = async (req, res) => {
+    const { message } = await this._service.findAll();
+
+    return res.status(200).json(message);
+  };
+
+  public findByid: RequestHandler = async (req, res) => {
+    const { id } = req.params;
+    const { type, message } = await this._service.findById(id);
+    if (type) return res.status(type).json({ message });
+
+    return res.status(200).json(message);
   };
 }
