@@ -34,4 +34,12 @@ export default class CarController {
 
     return res.status(200).json(message);
   };
+
+  public delete: RequestHandler = async (req, res) => {
+    const { id } = req.params;
+    const { type, message } = await this._service.delete(id);
+    if (type) return res.status(type).json({ message });
+
+    return res.sendStatus(204);
+  };
 }

@@ -46,4 +46,13 @@ export default class CarService {
 
     return { type: null, message: result };
   };
+
+  public delete = async (id: string) => {
+    if (!isValidObjectId(id)) return { type: 422, message: 'Invalid mongo id' };
+    
+    const car = await this._model.delete(id);
+    if (!car) return { type: 404, message: 'Car not found' };
+
+    return { type: null, message: null };
+  };
 }
