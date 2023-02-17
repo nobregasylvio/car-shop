@@ -35,4 +35,15 @@ export default class CarService {
 
     return { type: null, message: result };
   };
+
+  public update = async (id: string, updatedCar: Partial<ICar>) => {
+    if (!isValidObjectId(id)) return { type: 422, message: 'Invalid mongo id' };
+
+    const car = await this._model.update(id, updatedCar);
+    if (!car) return { type: 404, message: 'Car not found' };
+
+    const result = this.createCarDomain(car);
+
+    return { type: null, message: result };
+  };
 }
