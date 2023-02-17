@@ -6,7 +6,16 @@ export default class CarController {
   constructor(private _service = new CarService()) {}
 
   public create: RequestHandler = async (req, res) => {
-    const car: ICar = req.body;
+    const car: ICar = {
+      model: req.body.model,
+      year: req.body.year,
+      color: req.body.color,
+      status: req.body.status || false,
+      buyValue: req.body.buyValue,
+      doorsQty: req.body.doorsQty,
+      seatsQty: req.body.seatsQty,
+    };
+    
     const { message } = await this._service.create(car);
 
     return res.status(201).json(message);
