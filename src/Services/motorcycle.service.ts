@@ -1,5 +1,5 @@
 import { isValidObjectId } from 'mongoose';
-import Motorcicle from '../Domains/Motorcycle';
+import Motorcycle from '../Domains/Motorcycle';
 import IMotorcycle from '../Interfaces/IMotorcycle';
 import MotorcycleODM from '../Models/MotorcycleODM';
 
@@ -8,8 +8,8 @@ const msg = { invalid: 'Invalid mongo id', notFount: 'Motorcycle not found' };
 export default class MotorcycleService {
   constructor(private _model = new MotorcycleODM()) {}
 
-  private createMotorcycleDomain = (motorcycle: IMotorcycle | null): Motorcicle | null => {
-    if (motorcycle) return new Motorcicle(motorcycle);
+  private createMotorcycleDomain = (motorcycle: IMotorcycle | null): Motorcycle | null => {
+    if (motorcycle) return new Motorcycle(motorcycle);
     return null;
   };
 
