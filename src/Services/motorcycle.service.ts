@@ -38,10 +38,10 @@ export default class MotorcycleService {
     return { type: null, message: result };
   };
 
-  public update = async (id: string, updatedCar: Partial<IMotorcycle>) => {
+  public update = async (id: string, updatedMotorcycle: Partial<IMotorcycle>) => {
     if (!isValidObjectId(id)) return { type: 422, message: msg.invalid };
 
-    const motorcycle = await this._model.update(id, updatedCar);
+    const motorcycle = await this._model.update(id, updatedMotorcycle);
     if (!motorcycle) return { type: 404, message: msg.notFount };
 
     const result = this.createMotorcycleDomain(motorcycle);
