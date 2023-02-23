@@ -2,7 +2,11 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import { Model } from 'mongoose';
 import MotorcycleService from '../../../src/Services/motorcycle.service';
-import { inputMotorcycle, outputMotorcycle, outputMotorcycleUpdated } from '../../mock/motorcycle.mock';
+import {
+  inputMotorcycle,
+  outputMotorcycle,
+  outputMotorcycleUpdated,
+} from '../../mock/motorcycle.mock';
 
 describe('Valida as informações no motorcycleService', function () {
   describe('Valida se é possível cadastrar uma moto', function () {
