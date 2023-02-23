@@ -3,7 +3,7 @@ import Car from '../Domains/Car';
 import ICar from '../Interfaces/ICar';
 import CarODM from '../Models/CarODM';
 
-const msg = { invalid: 'Invalid mongo id', notFount: 'Car not found' };
+const msg = { invalid: 'Invalid mongo id', notFound: 'Car not found' };
 
 export default class CarService {
   constructor(private _model = new CarODM()) {}
@@ -31,7 +31,7 @@ export default class CarService {
     if (!isValidObjectId(id)) return { type: 422, message: msg.invalid };
 
     const car = await this._model.findById(id);
-    if (!car) return { type: 404, message: msg.notFount };
+    if (!car) return { type: 404, message: msg.notFound };
 
     const result = this.createCarDomain(car);
 
@@ -42,7 +42,7 @@ export default class CarService {
     if (!isValidObjectId(id)) return { type: 422, message: msg.invalid };
 
     const car = await this._model.update(id, updatedCar);
-    if (!car) return { type: 404, message: msg.notFount };
+    if (!car) return { type: 404, message: msg.notFound };
 
     const result = this.createCarDomain(car);
 
@@ -53,7 +53,7 @@ export default class CarService {
     if (!isValidObjectId(id)) return { type: 422, message: msg.invalid };
     
     const car = await this._model.delete(id);
-    if (!car) return { type: 404, message: msg.notFount };
+    if (!car) return { type: 404, message: msg.notFound };
 
     return { type: null, message: null };
   };

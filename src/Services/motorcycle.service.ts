@@ -3,7 +3,7 @@ import Motorcycle from '../Domains/Motorcycle';
 import IMotorcycle from '../Interfaces/IMotorcycle';
 import MotorcycleODM from '../Models/MotorcycleODM';
 
-const msg = { invalid: 'Invalid mongo id', notFount: 'Motorcycle not found' };
+const msg = { invalid: 'Invalid mongo id', notFound: 'Motorcycle not found' };
 
 export default class MotorcycleService {
   constructor(private _model = new MotorcycleODM()) {}
@@ -31,7 +31,7 @@ export default class MotorcycleService {
     if (!isValidObjectId(id)) return { type: 422, message: msg.invalid };
 
     const motorcycle = await this._model.findById(id);
-    if (!motorcycle) return { type: 404, message: msg.notFount };
+    if (!motorcycle) return { type: 404, message: msg.notFound };
 
     const result = this.createMotorcycleDomain(motorcycle);
 
@@ -42,7 +42,7 @@ export default class MotorcycleService {
     if (!isValidObjectId(id)) return { type: 422, message: msg.invalid };
 
     const motorcycle = await this._model.update(id, updatedMotorcycle);
-    if (!motorcycle) return { type: 404, message: msg.notFount };
+    if (!motorcycle) return { type: 404, message: msg.notFound };
 
     const result = this.createMotorcycleDomain(motorcycle);
 
@@ -53,7 +53,7 @@ export default class MotorcycleService {
     if (!isValidObjectId(id)) return { type: 422, message: msg.invalid };
     
     const motorcycle = await this._model.delete(id);
-    if (!motorcycle) return { type: 404, message: msg.notFount };
+    if (!motorcycle) return { type: 404, message: msg.notFound };
 
     return { type: null, message: null };
   };
