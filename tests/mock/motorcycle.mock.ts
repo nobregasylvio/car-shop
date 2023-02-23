@@ -31,3 +31,14 @@ export const outputMotorcycle: IMotorcycle[] = [
     engineCapacity: 300,
   },
 ];
+
+export const outputMotorcycleUpdated = {
+  id: '63efdffdc5da4d7ddd3d3e23',
+  model: 'Dafra horizon 300cc',
+  year: 2015,
+  color: 'red',
+  status: true,
+  buyValue: 16.000,
+  category: 'Custom',
+  engineCapacity: 300,
+};

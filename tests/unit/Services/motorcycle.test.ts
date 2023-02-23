@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import { Model } from 'mongoose';
 import MotorcycleService from '../../../src/Services/motorcycle.service';
-import { inputMotorcycle, outputMotorcycle } from '../../mock/motorcycle.mock';
+import { inputMotorcycle, outputMotorcycle, outputMotorcycleUpdated } from '../../mock/motorcycle.mock';
 
 describe('Valida as informações no motorcycleService', function () {
   describe('Valida se é possível cadastrar uma moto', function () {
@@ -33,6 +33,17 @@ describe('Valida as informações no motorcycleService', function () {
       const { message } = await service.findById('63efdffdc5da4d7ddd3d3e23');
 
       expect(message).to.be.deep.equal(outputMotorcycle[1]);
+    });
+  });
+
+  describe('Valida se é possível atualizar as informações de uma moto', function () {
+    it('Verifica se atualiza as informações com sucesso', async function () {
+      sinon.stub(Model, 'findByIdAndUpdate').resolves(outputMotorcycleUpdated);
+
+      const service = new MotorcycleService();
+      const { message } = await service.update('63efdffdc5da4d7ddd3d3e23', { color: 'red' });
+      
+      expect(message).to.be.deep.equal(outputMotorcycleUpdated);
     });
   });
 

@@ -31,3 +31,14 @@ export const outputCar: ICar[] = [
     seatsQty: 5,
   },
 ];
+
+export const outputCarUpdated: ICar = {
+  id: '63efdffdc5da4d7ddd3d3e22',
+  model: 'Fox',
+  year: 2011,
+  color: 'black',
+  status: true,
+  buyValue: 10.990,
+  doorsQty: 2,
+  seatsQty: 5,
+};
