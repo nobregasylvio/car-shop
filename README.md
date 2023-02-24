@@ -7,13 +7,15 @@
 
 ## Habilidades
 
-- Programação orientada a objetos: Herança, Abstração, Encapsulamento e Polimorfismo;
+- Programação orientada a objetos (POO): Herança, Abstração, Encapsulamento e Polimorfismo;
 
 - TypeScript: Classes, Instâncias, Atributos, Métodos e Objetos;
 
 - Mongoose: ODM utilizado para conectar com o banco de dados;
 
 - MongoDB: Banco de dados.
+
+- Behavior Driven Development (BDD)
 
 </br>
 
@@ -28,8 +30,7 @@
 
 </br>
 
-<details>
-<summary>Como rodar o projeto</summary>
+## Como rodar o projeto
 </br>
 
 1. Baixe o repositório utilizando o comando:
@@ -54,6 +55,4 @@
 
 6. Rode o projeto:
 
-        npm start       
-
-</details> 
+        npm start
